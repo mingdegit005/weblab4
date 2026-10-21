@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Book Catalogue</title>
+        <style>
+            .book{
+                border:1px solid #ccc;
+                padding: 12px;
+                margin:10px 0;
+                border-radius:4px;
+                background:#f9f9f9;
+
+            }
+            .book h3{margin-top:0;}
+            .label{font-weight:bold;}
+        </style>
+    </head>
+
+    <body>
+        <h1>Book Catalogue</h1>
+        <div id="bookList"></div>
+<script>
+    fetch('book.xml')
+    .then(response =>{
+        if(!response.ok) throw new Error('Fetch error: '+response.status);
+        return response.text();
+    })
+    .then(xmlText =>{
+        const parser = new DOMParser();
+        const xmlDoc =parser.parseFromString(xmlText,'text/xml');
+        const books = xmlDoc.getElementsByTagName('book');
+        const container = document.getElementById('bookList');
+        for(let i = 0; i<books.length;i++){
+            const book =books[i];
+            const id = book.getAttribute('id');
+            const title = book.getElementsByTagName('title')[0].textContent;
+            const author =book.getElementsByTagName('author')[0].textContent;
+            const price = book.getElementsByTagName('price')[0].textContent;
+
+            const div =document.createElement('div');
+            div.className = 'book';
+            div.innerHTML = `
+<h3>ID: ${id}</h3>
+<p><span class="label">Title:</span> ${title}</p>
+<p><span class="label">Author:</span> ${author}</p>
+<p><span class="label">Price:</span> $${price}</p>
+`;
+container.appendChild(div);
+        }
+    })
+    .catch(err => {
+                console.error(err);
+                document.getElementById('bookList').textContent = 'Failed to load data.';
+            });
+</script>
+
+    </body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version ="1.0" encoding ="UTF-8"?>
+<catalogue>
+<book id="b001">
+<title>Professional JavaScript for Web Developers</title>
+<author>Matt Frisbie</author>
+<price>129.00</price>
+</book>
+<book>
+<book id="b002">
+<title>Beginning XML</title>
+<author>Steven</author>
+<price>89.50</price>
+</book>
+<book id="b003">
+<title>Computer Networks</title>
+<author>Xie</author>
+<price>59.00</price>
+</book>
+</catalogue>

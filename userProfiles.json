@@ -1,0 +1,57 @@
+[
+{
+    "firstName":"Zhang",
+    "lastName":"San",
+    "email":"zhangsan@163.com",
+    "dateOfBirth":"1999_05_01",
+    "address":{
+        "street":"No.001 living Road",
+        "city":"Langfang",
+        "state":"Hebei",
+        "zipCode":"065000"
+    },
+    "userPreferences":{
+        "theme":"dark",
+        "language":"Chinese",
+        "notifications":true,
+        "subscription":true
+
+    }
+},
+{
+    "firstName":"Li",
+    "lastName":"Lin",
+    "email":"lilin@163.com",
+    "dateOfBirth":"2000_11_01",
+    "address":{
+        "street":"No.002 Chaoyang Road",
+        "city":"Beijing",
+        "state":"Beijing",
+        "zipCode":"100000"
+    },
+    "userPreferences":{
+        "theme":"light",
+        "language":"English",
+        "notifications":false,
+        "subscription":false
+    }
+},
+{
+     "firstName":"Wang",
+    "lastName":"Ming",
+    "email":"Wangming@163.com",
+    "dateOfBirth":"2001_01_01",
+    "address":{
+        "street":"No.003 Jinpu Road",
+        "city":"Tianjin",
+        "state":"Tianjin",
+        "zipCode":"300000"
+    },
+    "userPreferences":{
+        "theme":"auto",
+        "language":"Chinese",
+        "notifications":true,
+        "subscription":true
+}
+}
+]

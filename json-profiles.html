@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Profiles</title>
+        <style>
+            .user-card{
+                border:1px solid #ddd;
+                padding: 16px;
+margin:12px 0;
+border-radius:8px;
+background:#fafafa;
+            }
+            .user-card h3{
+                margin-top:0;
+                color: #333;
+            }
+            .label{
+                font-weight:bold;
+                color:#555;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>User Profile List</h1>
+        <div id="userContainer"></div>
+        <script>
+            fetch('userProfiles.json')
+            .then(response =>{
+                if(!response.ok){
+                    throw new Error('Fetch error: '+response.status);
+
+                }
+                return response.json();
+            })
+            .then(users =>{
+                const container = document.getElementById('userContainer');
+                users.forEach(user =>{
+                    const card = document.createElement('div');
+                    card.className = 'user-card';
+                    card.innerHTML = `
+                    <h3>${user.firstName}${user.lastName}</h3>
+                    <p><span class="label">Email:</span> ${user.email}</p>
+                     <p><span class="label">Date of Birth:</span> ${user.dateOfBirth}</p>
+ <p><span class="label">Address:</span> ${user.address.street},${user.address.city},${user.address.state},${user.address.zipCode}</p>
+                        <p><span class="label">Theme:</span> ${user.userPreferences.theme}</p>
+                        <p><span class="label">Language:</span> ${user.userPreferences.language}</p>
+                        <p><span class="label">Notifications:</span> ${user.userPreferences.notifications}</p>
+                        <p><span class="label">Newsletter Subscription:</span> ${user.userPreferences.subscription}</p>
+                 `;
+                 container.appendChild(card);       
+                }
+
+                );
+            }
+
+            )
+            .catch(err =>{
+            console.error('Fetch error: ',err.message);
+            document.getElementById('userContainer').textContent = 'Failed to load data.';
+
+            })
+        </script>
+    </body>
+</html>
